@@ -1,53 +1,33 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.InteropServices;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GreenMaster.Models
 {
-    [Table("Specie")]
-    public class Specie
+    public partial class Specie
     {
-        [Key]
-        [Column("scientific_name", TypeName = "nvarchar")]
-        public string ScientificName { get; set; }
+        public int Id { get; set; }
+        public string ScientificName { get; set; } = null!;
+        public string CommonName { get; set; } = null!;
+        public string? Shape { get; set; }
+        public string? FruitingPeriod { get; set; }
+        public string HardinessZone { get; set; } = null!;
+        public string Type { get; set; } = null!;
+        public string LifeCycle { get; set; } = null!;
+        public string Toxicity { get; set; } = null!;
+        public string? Fruit { get; set; }
+        public double Height { get; set; }
+        public double Width { get; set; }
+        public string? Attractant { get; set; }
+        public int MaintenanceLevel { get; set; }
 
-        [Column("trivial_name", TypeName = "nvarchar")]
-        [Required(ErrorMessage = "Please enter the trivial name")]
-        public string TrivialName { get; set; }
-
-        [Required(ErrorMessage = "Please enter a description")]
-        public string? Description { get; set; }
-
-        [Column("frost_resistance")]
-        [Required(ErrorMessage = "Please define if specie's resistance against frost")]
-        public FrostResistance FrostResistance { get; set; }
-
-        [Column("flower_period")]
-        [Required(ErrorMessage = "Please define months when specie is flowering")]
-        public ICollection<Month> FlowerPeriod { get; set; }
-
-        [Required(ErrorMessage = "Please define the location towards the sun")]
-        public SunRequirement Location { get; set; }
-
-        [Required(ErrorMessage = "Please define if specie is evergreen")]
-        public bool Evergreen { get; set; }
-
-        [Column("image")]
-        public string Image { get; set; }
-        
-
-
-
-        public Specie(string scientificName, string trivialName, string description, FrostResistance frostResistance, ICollection<Month> flowerPeriod, SunRequirement location, bool evergreen, string image)
-        {
-            ScientificName = scientificName;
-            TrivialName = trivialName;
-            Description = description;
-            this.FrostResistance = frostResistance;
-            FlowerPeriod = flowerPeriod;
-            Location = location;
-            Evergreen = evergreen;
-            Image = image;
-        }
+        public virtual WildlifeAttractant? AttractantNavigation { get; set; }
+        public virtual FruitType? FruitNavigation { get; set; }
+        public virtual Period? FruitingPeriodNavigation { get; set; }
+        public virtual HardinessZone HardinessZoneNavigation { get; set; } = null!;
+        public virtual LifeCycle LifeCycleNavigation { get; set; } = null!;
+        public virtual Rating MaintenanceLevelNavigation { get; set; } = null!;
+        public virtual Shape? ShapeNavigation { get; set; }
+        public virtual Toxicity ToxicityNavigation { get; set; } = null!;
+        public virtual PlantType TypeNavigation { get; set; } = null!;
     }
 }

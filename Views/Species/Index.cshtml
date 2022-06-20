@@ -1,0 +1,110 @@
+﻿@model IEnumerable<GreenMaster.Models.Specie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ScientificName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommonName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttractantNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FruitNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FruitingPeriodNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HardinessZoneNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LifeCycleNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaintenanceLevelNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShapeNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToxicityNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @if (Model.Any())
+    {
+        <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScientificName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommonName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Height)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Width)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AttractantNavigation!.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FruitNavigation!.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FruitingPeriodNavigation!.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HardinessZoneNavigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LifeCycleNavigation.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaintenanceLevelNavigation.Score)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShapeNavigation!.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToxicityNavigation.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeNavigation.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    }
+</table>
