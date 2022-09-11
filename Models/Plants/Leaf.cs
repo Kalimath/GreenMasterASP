@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GreenMaster.Models.Plants.Properties;
 
-namespace GreenMaster.Models
+namespace GreenMaster.Models.Plants
 {
-    public partial class Leaf
+    public class Leaf
     {
         public string? Size { get; set; }
         public string? Color { get; set; }

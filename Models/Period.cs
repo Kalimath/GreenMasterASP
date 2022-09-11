@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using GreenMaster.Models.Plants;
 
 namespace GreenMaster.Models
 {
-    public partial class Period
+    public class Period
     {
-        public Period()
-        {
-            Flowers = new HashSet<Flower>();
-            Species = new HashSet<Specie>();
-        }
-
         public string Name { get; set; } = null!;
 
-        public virtual ICollection<Flower> Flowers { get; set; }
-        public virtual ICollection<Specie> Species { get; set; }
+        public virtual ICollection<Flower> Flowers { get; set; } = new HashSet<Flower>();
+        public virtual ICollection<Specie> Species { get; set; } = new HashSet<Specie>();
     }
 }

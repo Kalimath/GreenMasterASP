@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using GreenMaster.Models;
+using GreenMaster.Models.Plants;
+using GreenMaster.Models.Plants.Properties;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
