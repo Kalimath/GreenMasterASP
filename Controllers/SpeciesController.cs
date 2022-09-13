@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GreenMaster.Data;
 using GreenMaster.Models.Plants;
+using GreenMaster.Models.Plants.Properties;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -58,9 +59,9 @@ namespace GreenMaster.Models
         {
             ViewData["Attractant"] = new SelectList(_context.WildlifeAttractants, "Name", "Name");
             ViewData["Fruit"] = new SelectList(_context.FruitTypes, "Name", "Name");
-            ViewData["FruitingPeriod"] = new SelectList(_context.Periods, "Name", "Name");
+            ViewData["FruitingPeriod"] = new SelectList(Enum.GetValues(typeof(Period)).Cast<Period>(), "Name", "Name");
             ViewData["HardinessZone"] = new SelectList(_context.HardinessZones, "Id", "Id");
-            ViewData["LifeCycle"] = new SelectList(_context.LifeCycles, "Type", "Type");
+            ViewData["LifeCycle"] = new SelectList(Enum.GetValues(typeof(LifeCycle)).Cast<LifeCycle>(), "Type", "Type");
             ViewData["MaintenanceLevel"] = new SelectList(_context.Ratings, "Score", "Score");
             ViewData["Shape"] = new SelectList(_context.Shapes, "Name", "Name");
             ViewData["Toxicity"] = new SelectList(_context.Toxicities, "Description", "Description");
@@ -83,9 +84,9 @@ namespace GreenMaster.Models
             }
             ViewData["Attractant"] = new SelectList(_context.WildlifeAttractants, "Name", "Name", specie.Attractant);
             ViewData["Fruit"] = new SelectList(_context.FruitTypes, "Name", "Name", specie.Fruit);
-            ViewData["FruitingPeriod"] = new SelectList(_context.Periods, "Name", "Name", specie.FruitingPeriod);
+            ViewData["FruitingPeriod"] = new SelectList(Enum.GetValues(typeof(Period)).Cast<Period>(), "Name", "Name", specie.FruitingPeriod);
             ViewData["HardinessZone"] = new SelectList(_context.HardinessZones, "Id", "Id", specie.HardinessZone);
-            ViewData["LifeCycle"] = new SelectList(_context.LifeCycles, "Type", "Type", specie.LifeCycle);
+            ViewData["LifeCycle"] = new SelectList(Enum.GetValues(typeof(LifeCycle)).Cast<LifeCycle>(), "Type", "Type", specie.LifeCycle);
             ViewData["MaintenanceLevel"] = new SelectList(_context.Ratings, "Score", "Score", specie.MaintenanceLevel);
             ViewData["Shape"] = new SelectList(_context.Shapes, "Name", "Name", specie.Shape);
             ViewData["Toxicity"] = new SelectList(_context.Toxicities, "Description", "Description", specie.Toxicity);
@@ -108,9 +109,9 @@ namespace GreenMaster.Models
             }
             ViewData["Attractant"] = new SelectList(_context.WildlifeAttractants, "Name", "Name", specie.Attractant);
             ViewData["Fruit"] = new SelectList(_context.FruitTypes, "Name", "Name", specie.Fruit);
-            ViewData["FruitingPeriod"] = new SelectList(_context.Periods, "Name", "Name", specie.FruitingPeriod);
+            ViewData["FruitingPeriod"] = new SelectList(Enum.GetValues(typeof(Period)).Cast<Period>(), "Name", "Name", specie.FruitingPeriod);
             ViewData["HardinessZone"] = new SelectList(_context.HardinessZones, "Id", "Id", specie.HardinessZone);
-            ViewData["LifeCycle"] = new SelectList(_context.LifeCycles, "Type", "Type", specie.LifeCycle);
+            ViewData["LifeCycle"] = new SelectList(Enum.GetValues(typeof(LifeCycle)).Cast<LifeCycle>(), "Type", "Type", specie.LifeCycle);
             ViewData["MaintenanceLevel"] = new SelectList(_context.Ratings, "Score", "Score", specie.MaintenanceLevel);
             ViewData["Shape"] = new SelectList(_context.Shapes, "Name", "Name", specie.Shape);
             ViewData["Toxicity"] = new SelectList(_context.Toxicities, "Description", "Description", specie.Toxicity);
@@ -152,9 +153,9 @@ namespace GreenMaster.Models
             }
             ViewData["Attractant"] = new SelectList(_context.WildlifeAttractants, "Name", "Name", specie.Attractant);
             ViewData["Fruit"] = new SelectList(_context.FruitTypes, "Name", "Name", specie.Fruit);
-            ViewData["FruitingPeriod"] = new SelectList(_context.Periods, "Name", "Name", specie.FruitingPeriod);
+            ViewData["FruitingPeriod"] = new SelectList(Enum.GetValues(typeof(Period)).Cast<Period>(), "Name", "Name", specie.FruitingPeriod);
             ViewData["HardinessZone"] = new SelectList(_context.HardinessZones, "Id", "Id", specie.HardinessZone);
-            ViewData["LifeCycle"] = new SelectList(_context.LifeCycles, "Type", "Type", specie.LifeCycle);
+            ViewData["LifeCycle"] = new SelectList(Enum.GetValues(typeof(LifeCycle)).Cast<LifeCycle>(), "Type", "Type", specie.LifeCycle);
             ViewData["MaintenanceLevel"] = new SelectList(_context.Ratings, "Score", "Score", specie.MaintenanceLevel);
             ViewData["Shape"] = new SelectList(_context.Shapes, "Name", "Name", specie.Shape);
             ViewData["Toxicity"] = new SelectList(_context.Toxicities, "Description", "Description", specie.Toxicity);

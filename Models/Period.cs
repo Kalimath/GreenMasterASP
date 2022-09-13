@@ -4,11 +4,16 @@ using GreenMaster.Models.Plants;
 
 namespace GreenMaster.Models
 {
-    public class Period
+    public enum Period
     {
-        public string Name { get; set; } = null!;
-
-        public virtual ICollection<Flower> Flowers { get; set; } = new HashSet<Flower>();
-        public virtual ICollection<Specie> Species { get; set; } = new HashSet<Specie>();
+        LateWinterOrEarlySpring = 0,
+        Spring = 1,
+        LateSpringOrEarlySummer = 2,
+        Summer = 3,
+        LateSummerOrEarlyFall = 4,
+        Fall = 5,
+        Winter = 6,
+        YearRound = 7,
+        Other = 8
     }
 }

@@ -18,18 +18,14 @@ namespace GreenMaster.Data
             : base(options)
         {
         }
-
-        public virtual DbSet<Color> Colors { get; set; } = null!;
+        
         public virtual DbSet<Container> Containers { get; set; } = null!;
         public virtual DbSet<Flower> Flowers { get; set; } = null!;
         public virtual DbSet<FruitType> FruitTypes { get; set; } = null!;
         public virtual DbSet<Function> Functions { get; set; } = null!;
         public virtual DbSet<HardinessZone> HardinessZones { get; set; } = null!;
         public virtual DbSet<Leaf> Leaves { get; set; } = null!;
-        public virtual DbSet<LifeCycle> LifeCycles { get; set; } = null!;
-        public virtual DbSet<Period> Periods { get; set; } = null!;
         public virtual DbSet<PhPreference> PhPreferences { get; set; } = null!;
-        public virtual DbSet<PlantPart> PlantParts { get; set; } = null!;
         public virtual DbSet<PlantType> PlantTypes { get; set; } = null!;
         public virtual DbSet<Rating> Ratings { get; set; } = null!;
         public virtual DbSet<Resistance> Resistances { get; set; } = null!;
@@ -44,18 +40,6 @@ namespace GreenMaster.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Color>(entity =>
-            {
-                entity.HasKey(e => e.Name)
-                    .HasName("color_pk");
-
-                entity.ToTable("color", "properties");
-
-                entity.Property(e => e.Name)
-                    .HasColumnType("character varying")
-                    .HasColumnName("name");
-            });
-
             modelBuilder.Entity<Container>(entity =>
             {
                 entity.HasNoKey();
@@ -98,17 +82,6 @@ namespace GreenMaster.Data
                 entity.Property(e => e.Type)
                     .HasColumnType("character varying")
                     .HasColumnName("type");
-
-                entity.HasOne(d => d.BloomingPeriodNavigation)
-                    .WithMany(p => p.Flowers)
-                    .HasForeignKey(d => d.BloomingPeriod)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("flower_period_name_fk");
-
-                entity.HasOne(d => d.ColorNavigation)
-                    .WithMany(p => p.Flowers)
-                    .HasForeignKey(d => d.Color)
-                    .HasConstraintName("flower_color_name_fk");
 
                 entity.HasOne(d => d.SizeNavigation)
                     .WithMany(p => p.Flowers)
@@ -168,39 +141,10 @@ namespace GreenMaster.Data
                     .HasColumnType("character varying")
                     .HasColumnName("size");
 
-                entity.HasOne(d => d.ColorNavigation)
-                    .WithMany(p => p.Leaves)
-                    .HasForeignKey(d => d.Color)
-                    .HasConstraintName("leaf_color_name_fk");
-
                 entity.HasOne(d => d.SizeNavigation)
                     .WithMany(p => p.Leaves)
                     .HasForeignKey(d => d.Size)
                     .HasConstraintName("leaf_size_name_fk");
-            });
-
-            modelBuilder.Entity<LifeCycle>(entity =>
-            {
-                entity.HasKey(e => e.Type)
-                    .HasName("life_cycle_pk");
-
-                entity.ToTable("life_cycle", "properties");
-
-                entity.Property(e => e.Type)
-                    .HasColumnType("character varying")
-                    .HasColumnName("type");
-            });
-
-            modelBuilder.Entity<Period>(entity =>
-            {
-                entity.HasKey(e => e.Name)
-                    .HasName("period_pk");
-
-                entity.ToTable("period", "properties");
-
-                entity.Property(e => e.Name)
-                    .HasColumnType("character varying")
-                    .HasColumnName("name");
             });
 
             modelBuilder.Entity<PhPreference>(entity =>
@@ -216,18 +160,6 @@ namespace GreenMaster.Data
                 entity.Property(e => e.Type)
                     .HasColumnType("character varying")
                     .HasColumnName("type");
-            });
-
-            modelBuilder.Entity<PlantPart>(entity =>
-            {
-                entity.HasKey(e => e.Name)
-                    .HasName("plant_part_pk");
-
-                entity.ToTable("plant_part", "properties");
-
-                entity.Property(e => e.Name)
-                    .HasColumnType("character varying")
-                    .HasColumnName("name");
             });
 
             modelBuilder.Entity<PlantType>(entity =>
@@ -356,22 +288,11 @@ namespace GreenMaster.Data
                     .HasForeignKey(d => d.Fruit)
                     .HasConstraintName("specie_fruit_type_name_fk");
 
-                entity.HasOne(d => d.FruitingPeriodNavigation)
-                    .WithMany(p => p.Species)
-                    .HasForeignKey(d => d.FruitingPeriod)
-                    .HasConstraintName("specie_period_name_fk");
-
                 entity.HasOne(d => d.HardinessZoneNavigation)
                     .WithMany(p => p.Species)
                     .HasForeignKey(d => d.HardinessZone)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("specie_hardiness_zone_id_fk");
-
-                entity.HasOne(d => d.LifeCycleNavigation)
-                    .WithMany(p => p.Species)
-                    .HasForeignKey(d => d.LifeCycle)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("specie_life_cycle_type_fk");
 
                 entity.HasOne(d => d.MaintenanceLevelNavigation)
                     .WithMany(p => p.Species)

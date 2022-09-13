@@ -40,10 +40,10 @@ namespace GreenMaster.Models.Plants
             }
         }
 
-        public string? FruitingPeriod { get; set; }
+        public Period FruitingPeriod { get; set; }
         public string HardinessZone { get; set; } = null!;
         public string Type { get; set; } = null!;
-        public string LifeCycle { get; set; } = null!;
+        public LifeCycle LifeCycle { get; set; }
         public string Toxicity { get; set; } = null!;
         public string? Fruit { get; set; }
         public double Height { get; set; }
@@ -55,7 +55,7 @@ namespace GreenMaster.Models.Plants
         [DisplayName("Fruittype")] public virtual FruitType? FruitNavigation { get; set; }
         [DisplayName("Fruiting period")] public virtual Period? FruitingPeriodNavigation { get; set; }
         [DisplayName("Hardiness zone")] public virtual HardinessZone HardinessZoneNavigation { get; set; } = null!;
-        [DisplayName("Lifecycle")] public virtual LifeCycle LifeCycleNavigation { get; set; } = null!;
+        [DisplayName("Lifecycle")] public virtual LifeCycle LifeCycleNavigation { get; set; }
         [DisplayName("maintenance-level")] public virtual Rating MaintenanceLevelNavigation { get; set; } = null!;
         [DisplayName("Shape")] public virtual Shape? ShapeNavigation { get; set; }
         [DisplayName("Toxicity")] public virtual Toxicity ToxicityNavigation { get; set; } = null!;

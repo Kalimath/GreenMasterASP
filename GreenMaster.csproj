@@ -30,4 +30,22 @@
     <Folder Include="Data\seeds\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Colors\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Colors\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Colors\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Colors\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Colors\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Periods\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Periods\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Periods\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Periods\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Periods\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\PlantParts\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\PlantParts\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\PlantParts\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\PlantParts\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\PlantParts\Index.cshtml" />
+  </ItemGroup>
+
 </Project>

@@ -1,9 +1,10 @@
 ﻿namespace GreenMaster.Models.Plants.Properties
 {
-    public class LifeCycle
+    public enum LifeCycle
     {
-        public string Type { get; set; } = null!;
-
-        public virtual ICollection<Specie> Species { get; set; } = new HashSet<Specie>();
+        Annual=0,
+        Perennial=1,
+        Biennial=2,
+        Other=3
     }
 }
