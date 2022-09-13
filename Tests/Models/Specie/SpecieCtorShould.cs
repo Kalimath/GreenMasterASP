@@ -38,4 +38,17 @@ public class SpecieCtorShould
             var specie = new GreenMaster.Models.Plants.Specie() { ScientificName = "", CommonName = "" };
         });
     }
+    
+    [Fact]
+    public void ThrowArgumentNullException_WhenShapeEmptyOrNull()
+    {
+        Assert.Throws<ArgumentException>(() =>
+        {
+            var specie = new GreenMaster.Models.Plants.Specie() { Shape = null! };
+        });
+        Assert.Throws<ArgumentException>(() =>
+        {
+            var specie = new GreenMaster.Models.Plants.Specie() { Shape = "" };
+        });
+    }
 }
